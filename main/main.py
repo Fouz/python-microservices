@@ -1,15 +1,15 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from models import setup_db, ProductUser, Product
-
-app = Flask(__name__)
+from models import setup_db, ProductUser, Product, db
 
 
 def create_app(test_config=None):
     # create and configure the app
+    app = Flask(__name__)
     setup_db(app)
     CORS(app)
+
     cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     @app.route("/")

@@ -13,8 +13,8 @@ POSTGRES = {
 }
 database_path = "postgresql://{}:{}@{}:{}/{}".format(
     POSTGRES["user"], POSTGRES["password"], POSTGRES["host"], POSTGRES["port"], POSTGRES["database"])
-db = SQLAlchemy()
 
+db = SQLAlchemy()
 
 '''
 setup_db(app)
@@ -37,6 +37,29 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=False)
     title = db.Column(db.String(200))
     image = db.Column(db.String(200))
+
+    def __init__(self, id, title, image):
+        self.title = title
+        self.id = id
+        self.image = image
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def format(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'release_date': self.image,
+        }
 
 
 class ProductUser(db.Model):
