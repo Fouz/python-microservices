@@ -4,7 +4,6 @@ import json
 from main import create_app, APP
 from models import Product, db
 
-params = pika.URLParameters()
 
 connection = pika.BlockingConnection(params)
 
