@@ -1,9 +1,12 @@
 import pika
 # helps in sending events
 import json
+from flask import jsonify
 from main import create_app, APP
 from models import Product, db
 
+params = pika.URLParameters(
+    "amqps://hkazzjar:o0AOL8dqsCtbCfgDQLhdy78Jrrz_8nOL@hummingbird.rmq.cloudamqp.com/hkazzjar")
 
 connection = pika.BlockingConnection(params)
 
@@ -13,17 +16,16 @@ channel.queue_declare(queue="main")
 
 
 def callback(channel, method, properties, body):
-    print("Recieved in main")
-    data = json.loads(body)
-    # print(data)
 
+    print("Recieved in main")
     if properties.content_type == "product_created":
-        # print("{} 000 {} 000 {}", data["id"], data["title"], data["image"])
+        data = json.loads(body)
         product = Product(data["id"], data["title"], data["image"])
         app = create_app()
         with app.app_context():
             db.session.add(product)
             db.session.commit()
+        print("product created ")
 
     elif properties.content_type == "product_updated":
         app = create_app()
@@ -38,7 +40,7 @@ def callback(channel, method, properties, body):
     elif properties.content_type == "product_deleted":
         app = create_app()
         with app.app_context():
-            product = Product.query.get(data["id"])
+            product = Product.query.get(json.loads(body))
             db.session.delete(product)
             db.session.commit()
             db.session.close()
