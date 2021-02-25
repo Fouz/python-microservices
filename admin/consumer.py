@@ -3,11 +3,10 @@ import pika
 
 
 params = pika.URLParameters(
-    "amqps://hkazzjar:o0AOL8dqsCtbCfgDQLhdy78Jrrz_8nOL@hummingbird.rmq.cloudamqp.com/hkazzjar")
 
-connection = pika.BlockingConnection(params)
+connection=pika.BlockingConnection(params)
 
-channel = connection.channel()
+channel=connection.channel()
 
 channel.queue_declare(queue="admin")
 
