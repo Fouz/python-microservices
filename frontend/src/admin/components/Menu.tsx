@@ -6,13 +6,13 @@ const Menu = () => {
                 <ul className="nav flex-column">
                   <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="#">
-                      <span data-feather="home"></span>
                       Products
                     </a>
                   </li>
                 </ul>
               </div>
         </nav>
+
     );
 };
 export default Menu;
