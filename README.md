@@ -6,8 +6,8 @@ Both Django and Flask are spawn with docker-compose as different isolated micros
 
 ## Tech Stack
 
-    * React - Frontend framework
-    * TypeScript - React UI framework
-    * Django - Backend framework
-    * Flask - Micro web framework
-    * RabbitMQ - Message broker
+* React - Frontend framework
+* TypeScript - React UI framework
+* Django - Backend framework
+* Flask - Micro web framework
+* RabbitMQ - Message broker
