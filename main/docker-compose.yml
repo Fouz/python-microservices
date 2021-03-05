@@ -18,6 +18,10 @@ services:
     build: 
       context: . 
       dockerfile: Dockerfile
+    env_file:
+    - .env
+    environment:
+      - RABBIT_URL=${RABBIT_URL}
     command: "python consumer.py"
     depends_on:
       - db
