@@ -51,10 +51,6 @@ class UserAPIView(APIView):
     def get(self, _):
         users = User.objects.all()
         user = random.choice(users)
-        if len(users) == 0:
-            return Response({
-                'msg': "No users yet"
-            })
         return Response({
             'id': user.id
         })
