@@ -1,4 +1,5 @@
 */.dbdata
 */.env
+*/database.env
 env/
 info.txt
