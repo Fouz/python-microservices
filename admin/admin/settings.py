@@ -27,7 +27,7 @@ SECRET_KEY=str(os.environ.get('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "host.docker.internal"]
+ALLOWED_HOSTS = ["*", "host.docker.internal","172.27.0.2",]
 
 
 # Application definition
@@ -129,6 +129,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# STATIC_URL = '../static/'
+# STATIC_ROOT= '../static/'
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
-STATIC_ROOT= '/static/'
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
+# print(STATICFILES_DIRS)
 CORS_ORIGIN_ALLOW_ALL = True
