@@ -15,6 +15,9 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# gets static files from statuc url 
+STATIC_URL = '/static/'
+STATIC_ROOT= '/static/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # mine
+    "gunicorn",
     'rest_framework',
     'corsheaders',
     'products'
@@ -129,12 +133,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# STATIC_URL = '../static/'
-# STATIC_ROOT= '../static/'
-STATIC_ROOT = 'static'
-STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-# print(STATICFILES_DIRS)
 CORS_ORIGIN_ALLOW_ALL = True

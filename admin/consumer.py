@@ -34,3 +34,4 @@ print("Started Consumening")
 channel.start_consuming()
 
 channel.close()
+

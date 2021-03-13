@@ -1,5 +1,6 @@
 */.dbdata
 */.env
+*/database.env
 */static
 admin/database.env
 env/

@@ -1,14 +1,15 @@
 version: "3.8"
 services: 
+
   nginx:
     build: ../nginx
     volumes:
       - static:/static
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
     depends_on:
       - backend
+
   backend: 
     build: 
       context: . 
@@ -21,10 +22,10 @@ services:
       - 8000:8000
     volumes:
       - static:/static
-      # - .:/app
-    entrypoint: ["sh","entrypoint.sh"]
+    entrypoint: ["sh","/entrypoint.sh"]
     depends_on:
       - db
+
   queue:
     build: 
       context: . 
@@ -36,6 +37,7 @@ services:
       - RABBIT_URL=${RABBIT_URL}
     depends_on:
       - db
+
   db:
     image: postgres
     restart: always
