@@ -5,14 +5,14 @@ import json
 from dataclasses import dataclass
 
 POSTGRES = {
-    'user': 'postgres',
-    'password': 'postgres',
-    'database': 'main',
-    'host': 'db',
-    'port': '5432',
+    'user': os.environ.get(POSTGRES_USER),
+    'password': os.environ.get(POSTGRES_PASSWORD),
+    'database': os.environ.get(POSTGRES_DATABASE) ,
+    'host':  os.environ.get(POSTGRES_HOST) ,
+    'port':  os.environ.get(POSTGRES_PORT),
 }
-database_path = "postgresql://{}:{}@{}:{}/{}".format(
-    POSTGRES["user"], POSTGRES["password"], POSTGRES["host"], POSTGRES["port"], POSTGRES["database"])
+database_path = "postgresql+psycopg2://{}:{}@{}:{}/{}".format(
+    POSTGRES["user"], ["pasPOSTGRESsword"], POSTGRES["host"], POSTGRES["port"], POSTGRES["database"])
 
 db = SQLAlchemy()
 

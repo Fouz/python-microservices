@@ -85,17 +85,23 @@ WSGI_APPLICATION = 'admin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+POSTGRES = {
+    'user': os.environ.get(POSTGRES_USER),
+    'password': os.environ.get(POSTGRES_PASSWORD),
+    'database': os.environ.get(POSTGRES_DATABASE) ,
+    'host':  os.environ.get(POSTGRES_HOST) ,
+    'port':  os.environ.get(POSTGRES_PORT),
+}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'milkyway',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'NAME': POSTGRES["database"],
+        'USER': POSTGRES["user"],
+        'PASSWORD':POSTGRES["password"],
+        'HOST':POSTGRES["host"] ,
+        'PORT': POSTGRES["port"],
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
