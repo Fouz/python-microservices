@@ -4,15 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 from dataclasses import dataclass
 
-POSTGRES = {
-    'user': os.environ.get(POSTGRES_USER),
-    'password': os.environ.get(POSTGRES_PASSWORD),
-    'database': os.environ.get(POSTGRES_DATABASE) ,
-    'host':  os.environ.get(POSTGRES_HOST) ,
-    'port':  os.environ.get(POSTGRES_PORT),
-}
 database_path = "postgresql+psycopg2://{}:{}@{}:{}/{}".format(
-    POSTGRES["user"], ["pasPOSTGRESsword"], POSTGRES["host"], POSTGRES["port"], POSTGRES["database"])
+    os.environ.get('POSTGRES_USER'), os.environ.get('POSTGRES_PASSWORD'), os.environ.get('POSTGRES_HOST'), os.environ.get('POSTGRES_PORT'), os.environ.get('POSTGRES_DATABASE'))
 
 db = SQLAlchemy()
 

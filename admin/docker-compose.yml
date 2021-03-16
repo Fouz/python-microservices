@@ -18,6 +18,11 @@ services:
       - .env
     environment:
       - SECRET_KEY=${SECRET_KEY}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=${POSTGRES_DATABASE}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
     ports:
       - 8000:8000
     volumes:
@@ -42,7 +47,7 @@ services:
     image: postgres
     restart: always
     env_file:
-      - database.env
+      - db.env
     volumes:
       - .dbdata:/var/lib/postgresql/data
     # ports:
